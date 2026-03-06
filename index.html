@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Maryam</title>
+
+<style>
+
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background: linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.container{
+width:80%;
+max-width:900px;
+background:white;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+padding:30px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.text{
+width:55%;
+font-size:22px;
+line-height:1.6;
+white-space:pre-line;
+}
+
+.photo{
+width:40%;
+}
+
+.photo img{
+width:100%;
+border-radius:10px;
+}
+
+button{
+margin-top:20px;
+padding:10px 25px;
+font-size:18px;
+border:none;
+background:#ff4b6e;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff2e57;
+}
+
+.center{
+text-align:center;
+width:100%;
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="text" id="text"></div>
+
+<div class="photo" id="photoBox">
+<img src="maryam.jpg/maryam.jpg">
+</div>
+
+</div>
+
+<div style="position:absolute;bottom:40px;">
+<button onclick="nextStep()">Next</button>
+</div>
+
+<script>
+
+let step = 0;
+
+const messages = [
+
+"Step 1 💫\n\nToday is a very special day.",
+
+"Step 2 🌸\n\nA beautiful soul named Maryam was born on this day.",
+
+"Step 3 🎉\n\nYou bring happiness and light to everyone around you.",
+
+"Step 4 ❤️\n\nDear Maryam (Meria),\nFrom your brother:\nI pray Allah fills your life with success, peace and endless joy.",
+
+"Step 5 🎂\n\nHappy Birthday Maryam.\nMay your future be bright and full of blessings."
+
+];
+
+function typeWriter(text, i=0){
+if(i < text.length){
+document.getElementById("text").innerHTML += text.charAt(i);
+setTimeout(()=>typeWriter(text,i+1),40);
+}
+}
+
+function nextStep(){
+
+document.getElementById("text").innerHTML="";
+
+step++;
+
+if(step < messages.length){
+typeWriter(messages[step]);
+}
+
+if(step === 4){
+document.getElementById("photoBox").classList.add("hidden");
+
+document.querySelector(".container").innerHTML = `
+<div class="center">
+<h1>Happy Birthday Maryam 🎉</h1>
+<p>Wish you many more years ahead Love you DearMe Sisturh</p>
+<img src="maryam.jpg/maryam.jpg" style="width:300px;border-radius:15px;margin-top:20px;">
+</div>
+`;
+}
+
+}
+
+typeWriter(messages[0]);
+
+</script>
+
+</body>
+</html>
